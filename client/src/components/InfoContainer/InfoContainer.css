@@ -1,0 +1,95 @@
+
+.main-row{
+  margin: 0px;
+  display: flex;
+}
+
+.info-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-evenly;
+  margin-left: 4rem;
+  margin-right: 2rem;
+}
+
+.menu-data{
+  padding: 1.5rem;
+  border-style:none none outset none;
+  border-color: #E6DDC6;
+  border-width: thin;
+}
+
+.menu-data:hover{
+  background-color: #867AE9;
+}
+
+.simplebar-track.simplebar-vertical .simplebar-scrollbar:before {
+    background-color: #FDFAF6;
+}
+
+/* @media only screen and (min-width: 800px) {
+
+}
+@media only screen and (max-width: 800px) {
+  .menu-row{
+    background-color: #11052C;
+    width: 0rem;
+  }
+} */
+.menu-row{
+  background-color: #11052C;
+  top:5rem;
+  width: 0rem;
+  position: fixed;
+  z-index: 1;
+}
+
+.toggleDropdown{
+  position: fixed;
+  top:5rem;
+  outline: none;
+  z-index: 1;
+  height: 40rem;
+}
+
+
+.toggle{
+  width: 15rem;
+}
+
+.toggleButton{
+  left:15rem;
+  outline: none;
+}
+
+.btn:focus {
+  outline: none !important;
+  box-shadow: none;
+}
+
+.card_1{
+  background-color: blue;
+  width: 25rem;
+  height: 18rem;
+  position: relative;
+  margin-top: 2rem;
+  background-size: contain;
+}
+
+.card_1 .info{
+  position: absolute;
+  bottom:0px;
+  width:25rem;
+  height: 5rem;
+  border-style:outset none none none;
+  border-width: thin;
+  border-color: white;
+  color: #FEF7DC;
+}
+
+.weatherDataForm{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
