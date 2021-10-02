@@ -72,7 +72,7 @@ export default function Weather(props){
   const [circularProgress,setCircularProgress] = useState("static");
   const getDetails = (details,method) => {
     setCircularProgress("indeterminate");
-    fetch('https://information-hub-backend.herokuapp.com/' + method,{
+    fetch(method,{
       method: 'POST',
       body: details,
       headers: {
@@ -239,11 +239,11 @@ export default function Weather(props){
 
   const pageArr = Array.from({length: totalPageNo}, (_, index) => index + 1);
   return (
-    <div class="container-fluid h-100" >
+    <div class="container-fluid h-100" style={{padding:"30px"}}>
       {(movieResults !=='' || peopleMovieResults !== '') && <button type="button" class="btn btn-outline-primary" onClick = {backButtonHandler} style={{marginLeft:"2rem"}}><i class="fas fa-arrow-circle-left" style={{marginRight:"0.4rem",marginTop:"0.2rem",fontSize:"1.4rem"}}></i><strong style={{fontSize:"1.1rem"}}>Back</strong></button>}
-      <div class="container" style={{textAlign:"center"}}>
+      <div class="container" style={{textAlign:"center",padding:"0px"}}>
           <div class="dropdown show" style={{display:"inline"}}>
-            <button class="btn btn-outline-primary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{marginTop:"1rem"}}>
+            <button class="btn btn-outline-primary" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{marginTop:"1rem",width:"3rem",height:"3rem"}}>
               {pageNo}
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -259,7 +259,7 @@ export default function Weather(props){
             </SimpleBar>
             </div>
           </div>
-          <FormControl variant="filled" className={classes.formControl} style={{minWidth: 250,marginBottom:"2rem"}} >
+          <FormControl variant="filled" className={classes.formControl} style={{minWidth: 250,marginBottom:"1rem"}} >
             <InputLabel id="demo-controlled-open-select-label" style = {{fontSize:"1.1rem",color:"#6a197d",zIndex:"-1"}}>Options</InputLabel>
             <Select
               labelId="demo-controlled-open-select-label"
@@ -276,7 +276,7 @@ export default function Weather(props){
             </Select>
           </FormControl>
           <div class="dropdown show" style={{display:"inline"}}>
-            <button class="btn btn-outline-primary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{marginTop:"1rem"}}>
+            <button class="btn btn-outline-primary" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{marginTop:"1rem",width:"3rem",height:"3rem"}}>
               <i class="fas fa-filter"></i>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">

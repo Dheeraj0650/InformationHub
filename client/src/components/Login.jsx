@@ -68,7 +68,7 @@ export default function FullWidthTabs(props) {
 
   function validateUsername(event){
   	  var username=event.target.value;
-  	  var usernamepattern=/^[A-Za-z .]{3,15}$/;
+  	  var usernamepattern=/^[A-Za-z][A-Za-z0-9]{3,15}$/;
     	if(usernamepattern.test(username))
     	{
         if((event.target.name.charAt(event.target.name.length-1))==='3')
@@ -83,10 +83,10 @@ export default function FullWidthTabs(props) {
       {
         if((event.target.name.charAt(event.target.name.length-1))==='3')
         {
-          changeAlert_5([false,"* invalid username, username should contain only characters [A-Z][a-z] and length should be in between 3 and 15"])
+          changeAlert_5([false,"* invalid username, username should contain only characters [A-Z][a-z][0-9] and length should be in between 3 and 15"])
         }
         else{
-          changeAlert_3([false,"* invalid username, username should contain only characters [A-Z][a-z] and length should be in between 3 and 15"])
+          changeAlert_3([false,"* invalid username, username should contain only characters [A-Z][a-z][0-9] and length should be in between 3 and 15"])
         }
       }
 	 }

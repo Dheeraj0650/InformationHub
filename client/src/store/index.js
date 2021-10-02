@@ -14,6 +14,18 @@ const movieResultsState = {
   details: '',
 };
 
+const realtimeTextCardState = {
+  details: '',
+};
+
+const realtimeTextState = {
+  details: '',
+};
+
+const realtimeTextTeamState = {
+  details: 'Team-A',
+};
+
 const authSlice = createSlice({
   name: 'authentication',
   initialState: initialAuthState,
@@ -55,12 +67,46 @@ const movieResultsSlice = createSlice({
   },
 });
 
+const realtimeTextCardSlice = createSlice({
+  name: 'realtimeTextCard_result',
+  initialState: realtimeTextCardState,
+  reducers: {
+    setRealtimeTextCard(state,action) {
+      state.details = action.payload;
+    }
+  },
+});
+
+const realtimeTextSlice = createSlice({
+  name: 'realtimeText_result',
+  initialState: realtimeTextState,
+  reducers: {
+    setRealtimeText(state,action) {
+      state.details = action.payload;
+    }
+  },
+});
+
+const realtimeTextTeamSlice = createSlice({
+  name: 'realtimeTextTeam',
+  initialState: realtimeTextTeamState,
+  reducers: {
+    setRealtimeTextTeam(state,action) {
+      state.details = action.payload;
+    }
+  },
+});
+
 const store = configureStore({
-  reducer: { auth: authSlice.reducer, movie: peopleMovieResultsSlice.reducer, movieResult: movieResultsSlice.reducer},
+  reducer: { auth: authSlice.reducer, movie: peopleMovieResultsSlice.reducer, movieResult: movieResultsSlice.reducer, realtimeTextCardResult: realtimeTextCardSlice.reducer, realtimeTextResult: realtimeTextSlice.reducer, realtimeTextTeamResult: realtimeTextTeamSlice.reducer},
 });
 
 const authActions = authSlice.actions;
 const peopleMovieResult = peopleMovieResultsSlice.actions;
 const movieResult = movieResultsSlice.actions;
-export {authActions, movieResult, peopleMovieResult};
+const realtimeTextCardResult = realtimeTextCardSlice.actions;
+const realtimeTextResult = realtimeTextSlice.actions;
+const realtimeTextTeamResult = realtimeTextTeamSlice.actions;
+
+export {authActions, movieResult, peopleMovieResult, realtimeTextCardResult, realtimeTextResult, realtimeTextTeamResult};
 export default store;

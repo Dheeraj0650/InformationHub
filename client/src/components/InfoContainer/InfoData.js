@@ -303,4 +303,29 @@ var people = [
     }
 ]
 
-export {sidebarMenuArray, method_1, method_2,method_3,method_4,movies,people};
+var addCard = [
+    {
+      type:'InputField',
+      name:'name',
+      required:false
+    },
+    {
+      type:'InputField',
+      name:'title',
+      required:false
+    },
+    {
+      type:'Dropdown',
+      name:'priority',
+      content:{minor:'minor',major:'major',critical:'critical'},
+      required:true
+    },
+    {
+      type:'Dropdown',
+      name:'team',
+      content:{'Team-A':'Team-A','Team-B':'Team-B','Team-C':'Team-C'},
+      required:true
+    },
+]
+
+export {sidebarMenuArray, method_1, method_2,method_3,method_4,movies,people,addCard};

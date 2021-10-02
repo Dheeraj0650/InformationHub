@@ -85,5 +85,6 @@
   }
   .results-card{
     width: 31rem;
+    padding: 0px;
   }
 }

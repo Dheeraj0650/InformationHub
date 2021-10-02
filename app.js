@@ -9,8 +9,17 @@ const passportLocalMongoose = require('passport-local-mongoose');
 const findOrCreate = require('mongoose-findorcreate');
 var cors = require('cors');
 var fetch = require("cross-fetch");
-
 const app = express();
+const http = require('http');
+const server = http.createServer(app);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+    credentials: true
+  }
+});;
 app.use(cors());
 
 app.use(express.static(__dirname + "/public"));
@@ -36,9 +45,9 @@ mongoose.connect("mongodb+srv://dheeraj0650:" + process.env.PASSWORD + "@cluster
 
 mongoose.connection.on('open', function() {
   console.log('Connected to mongo server.');
-  const changeStream = mongoose.connection.collection('samples').watch();
+  const changeStream = mongoose.connection.collection('realtimetextcards').watch();
   changeStream.on('change',(change) => {
-    // console.log(change);
+      io.emit("changes-in-card",'');
   })
 });
 
@@ -48,8 +57,17 @@ const userSchema = new mongoose.Schema({
   email: String,
   password: String,
   googleId: String,
-
+  team:[String]
 });
+
+const realtimeCardSchema = new mongoose.Schema({
+  name: String,
+  title: String,
+  priority: String,
+  comment: String,
+  team:String
+});
+
 
 userSchema.index({
   "email": 1
@@ -60,18 +78,38 @@ userSchema.index({
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
 
-// const sample = new mongoose.Schema({
-// a:Number,
-// b:Number
-// });
-
 const User = mongoose.model("User", userSchema);
-// const Sample = mongoose.model("Sample", sample);
-// const sample1 = Sample({
-//   a:10,
-//   b:40
-// });
-// sample1.save();
+const RealtimeTextCard = mongoose.model("RealtimeTextCard",realtimeCardSchema);
+
+io.on("connection", function(socket){
+  socket.on("added-new-card",function(data){
+    var details = JSON.parse(data);
+    const realtimeTextCard = new RealtimeTextCard({
+      name: details.name,
+      title: details.title,
+      priority: details.priority,
+      comment: details.comment,
+      team:details.team
+    });
+    if(details.priority && details.comment){
+      realtimeTextCard.save();
+    }
+    io.emit("changes-in-card",data);
+  })
+})
+
+app.post("/realtimeCards", function(req, res) {
+  User.find({username:req.body.username},function(err,docs){
+    if(docs[0].team.includes(req.body.team)){
+      RealtimeTextCard.find({team:req.body.team},
+        function (err, docs) {
+          res.send(JSON.stringify(docs));
+        }
+      );
+    }
+  });
+})
+
 
 passport.use(User.createStrategy());
 passport.serializeUser(function(user, done) {
@@ -84,100 +122,10 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-//
-//
-// //OAuth Configuration for Outlook
-// passport.use(new OutlookStrategy({
-//     clientID: process.env.OUTLOOK_CLIENT_ID,
-//     clientSecret: process.env.OUTLOOK_CLIENT_SECRETS,
-//     callbackURL: "https://limitless-cove-52361.herokuapp.com/auth/outlook/Grocery_Kart",
-//   },
-//   function(accessToken, refreshToken, profile, done) {
-//     var user = {
-//       outlookId: profile.id,
-//       name: profile.DisplayName,
-//       email: profile.EmailAddress,
-//       accessToken: accessToken
-//     };
-//     if (refreshToken)
-//       user.refreshToken = refreshToken;
-//     if (profile.MailboxGuid)
-//       user.mailboxGuid = profile.MailboxGuid;
-//     if (profile.Alias)
-//       user.alias = profile.Alias;
-//     User.findOrCreate(user, function(err, user) {
-//       return done(err, user);
-//     });
-//   }
-// ));
-//
-// app.get('/auth/outlook',
-//   passport.authenticate('windowslive', {
-//     scope: [
-//       'openid',
-//       'profile',
-//       'offline_access',
-//       'https://outlook.office.com/Mail.Read'
-//     ]
-//   })
-// );
-//
-// app.get('/auth/outlook/Grocery_Kart',
-//   passport.authenticate('windowslive', {
-//     failureRedirect: "/"
-//   }),
-//   function(req, res) {
-//     // Successful authentication, redirect home.
-//     res.redirect("/main");
-//   });
-
-app.post("/auth/google", function(req, res) {
-  User.findOrCreate({
-      googleId: req.body.googleId,
-      username: req.body.username,
-      email:req.body.email
-  }, function(err) {
-      if (err) {
-        res.send(err.message);
-      } else {
-          res.send("Successful");
-      }
-    });
-});
-
-app.post("/auth/github", function(req, res) {
-  User.findOrCreate({
-    googleId: req.body.googleId,
-    username: req.body.username,
-    email:req.body.email
-  }, function(err) {
-      if (err) {
-        res.send(err.message);
-      } else {
-          res.send("Successful");
-      }
-    });
-});
-
-app.post("/auth/microsoft", function(req, res) {
-  User.findOrCreate({
-    googleId: req.body.googleId,
-    username: req.body.username,
-    email:req.body.email
-  }, function(err) {
-      if (err) {
-        res.send(err.message);
-      } else {
-          res.send("Successful");
-      }
-    });
-});
-
-
 app.post("/register", function(req, res) {
   User.register({
     username: req.body.username,
-    email:req.body.email
+    email:req.body.email.toLowerCase()
   }, req.body.password, function(err, user) {
     if (err) {
       res.send(err.message);
@@ -218,7 +166,6 @@ app.get("/logout", function(req, res) {
   req.logout();
   res.send("Successful");
 });
-
 
 app.post("/Weather", function(req, res) {
   var formBody = [];
@@ -504,5 +451,9 @@ if (port == null || port == "") {
   port = 9000;
 }
 app.listen(port, function() {
+  console.log("Server started");
+});
+
+server.listen(8000, function() {
   console.log("Server started");
 });

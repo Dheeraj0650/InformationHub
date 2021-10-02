@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Oswald:300,400,500,700");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");
 .gr-1 {
-  background: linear-gradient(170deg, #01E4F8 0%, #1D3EDE 100%);
+  background-color: #a40606;
+  background-image: linear-gradient(315deg, #a40606 0%, #d98324 74%);
+
 }
 
 .gr-2 {

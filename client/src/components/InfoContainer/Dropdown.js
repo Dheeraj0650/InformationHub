@@ -20,13 +20,14 @@ export default function(props){
 
   return (
     <div class="container">
-      <FormControl variant="filled" >
+      <FormControl variant="filled" style={{width:props.width}}>
         <InputLabel htmlFor="filled-age-native-simple" style={{color:"#00ade6"}}>{props.name}</InputLabel>
         <Select
           native
           value={state}
           onChange={handleChange}
           name={props.name}
+          required={props.required}
         >
           <option aria-label="None" value="" />
           {content_arr.map((info) => (<option value={info[0]}>{info[1]}</option>))}

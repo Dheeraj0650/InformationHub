@@ -27,6 +27,7 @@ import MovieData from './InfoContainer/movies/MovieData';
 import RealtimeText from './InfoContainer/realtime_text/RealtimeText';
 
 function App(){
+
   const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
   const dispatch = useDispatch();
   var redirect = false;
@@ -40,7 +41,6 @@ function App(){
           }
         }
     }, []);
-
 
   // const loginHandler = (value) => {
   //     if(value === true){
