@@ -12,7 +12,7 @@ import { realtimeTextCardResult, realtimeTextResult, authActions, realtimeTextTe
 import { useDispatch, useSelector} from 'react-redux';
 import ResultsCard from './ResultsCard';
 
-const socket = io("http://localhost:8000");
+const socket = io("http://localhost:7157");
 
 const useStyles = makeStyles((theme) => ({
   button: {
