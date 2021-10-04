@@ -454,6 +454,6 @@ app.listen(port, function() {
   console.log("Server started");
 });
 
-server.listen(8000, function() {
+server.listen(7000, function() {
   console.log("Server started");
 });
