@@ -10,16 +10,20 @@ const findOrCreate = require('mongoose-findorcreate');
 var cors = require('cors');
 var fetch = require("cross-fetch");
 const app = express();
-const http = require('http');
-const server = http.createServer(app);
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 9000;
+}
+const server = app.listen(port, function() {
+  console.log("Server started");
+});
 const io = require("socket.io")(server, {
   cors: {
-    origin: "https://information-hub-app.herokuapp.com",
+    origin: "*",
     methods: ["GET", "POST"],
-    allowedHeaders: ["my-custom-header"],
     credentials: true
   }
-});;
+});
 app.use(cors());
 
 app.use(express.static(__dirname + "/public"));
@@ -445,15 +449,3 @@ if(process.env.NODE_ENV === "production"){
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   })
 }
-
-let port = process.env.PORT;
-if (port == null || port == "") {
-  port = 9000;
-}
-app.listen(port, function() {
-  console.log("Server started");
-});
-
-server.listen(7157, function() {
-  console.log("Server started");
-});
