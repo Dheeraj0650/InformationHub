@@ -4,9 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
     "server": "node app.js",
-    "client": "npm start --prefix client",
+    "start": "npm start --prefix client",
     "vercel": "concurrently \"npm run heroku-postbuild\" \"node app.js\"",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "npm install && npm install --prefix client && npm run build --prefix client"
