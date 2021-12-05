@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "server": "node app.js",
-    "start": "npm start --prefix client",
+    "start": "concurrently \"npm start --prefix client\" \"npm run server\"",
     "vercel": "concurrently \"npm run heroku-postbuild\" \"node app.js\"",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "heroku-postbuild": "npm install && npm install --prefix client && npm run build --prefix client"
