@@ -1,0 +1,489 @@
+*:focus {
+  outline: none !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar-container {
+  padding-top: 2rem;
+}
+
+@media screen and (min-width: 800px) {
+
+  .nav-button {
+    background-color: white;
+    border-radius: 2rem;
+    height: 2rem;
+    width: 9rem;
+    border: 0.1rem solid blue;
+    font-family: 'Noto Sans', sans-serif;
+    color: #596e79;
+    font-weight: bold;
+    padding:0px 20px 0px 20px;
+  }
+
+  .nav-button:focus {
+    outline: none;
+  }
+
+  .nav-button:hover {
+    background-color: #6a2c70;
+    color: white;
+    border-color: #6a2c70;
+  }
+
+  .hover-button {
+    width: 60%;
+    height: 40px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background: #e79c2a;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+  }
+
+  .hover-button:hover {
+    background: #6d44b8;
+  }
+
+  .login-input {
+    width: 40rem;
+    height: 2.8rem;
+    display: block;
+    margin-top: 0.5rem;
+    outline: none;
+    border-radius: 5px;
+    border: 2.5px solid #206a5d;
+    text-align: center;
+  }
+
+}
+
+@media screen and (max-width: 800px) {
+  .nav-button {
+    background-color: white;
+    border-radius: 2rem;
+    height: 3rem;
+    max-width: 20rem;
+    font-size: 1.4rem;
+    border: 0.1rem solid blue;
+    font-family: 'Noto Sans', sans-serif;
+    color: #596e79;
+    font-weight: bold;
+    padding:0px 20px 0px 20px;
+  }
+
+  .nav-button:focus {
+    outline: none;
+  }
+
+  .nav-button:hover {
+    background-color: #6a2c70;
+    color: white;
+    border-color: #6a2c70;
+  }
+
+  .hover-button {
+    width: 65%;
+    height: 50px;
+    margin: 10px auto;
+    justify-content: center;
+    display: block;
+    color: #fff;
+    background: #e79c2a;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: 20px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    transition: .2s ease-in;
+    cursor: pointer;
+  }
+
+  .hover-button:hover {
+    background: #6d44b8;
+  }
+
+  .login-input {
+    width: 28rem;
+    height: 3rem;
+    display: block;
+    margin-top: 0.5rem;
+    outline: none;
+    border-radius: 5px;
+    border: 2.5px solid #206a5d;
+    text-align: center;
+    font-size: 1.3rem;
+  }
+
+}
+
+
+
+.information-part {
+  margin-top: 1.4rem;
+  min-height:40rem;
+}
+
+.info {
+  display: grid;
+  place-items: center;
+  font-size: 5rem;
+  text-align: center;
+}
+
+.img-1 {
+  display: grid;
+  place-items: center;
+}
+
+.middle-container {
+  padding-top: 3rem;
+}
+
+.welcome-text {
+  font-size: 6rem;
+}
+
+
+@media screen and (min-width: 800px) {
+  #bcc78b6a-42d3-482d-a166-e03269f3a1e1 {
+    width: 550px;
+  }
+
+  .middle-container {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    grid-auto-rows: minmax(410px, auto);
+    grid-gap: 2rem;
+  }
+
+  .box-1 {
+    grid-column: 1/3;
+    border-radius: 1rem;
+    background: no-repeat url('https://spoonacular.com/application/frontend/images/wallpaper1.jpg');
+    background-size: cover;
+    box-shadow: 13px 13px 8px #bfafb2;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 3rem;
+    color: white;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box-2 {
+    border-radius: 1rem;
+    background: right no-repeat url('https://s3.amazonaws.com/brewerydb/home-carousel-images/hp-main.jpg');
+    background-size: cover;
+    box-shadow: 13px 13px 8px #bfafb2;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 3rem;
+    color: white;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box-3 {
+    border-radius: 1rem;
+    background: no-repeat url('https://i.pinimg.com/originals/0f/bb/76/0fbb768ee2a2a1391e51a4f85ed7e6c9.jpg');
+    background-size: cover;
+    box-shadow: 13px 13px 8px #bfafb2;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 3rem;
+    color: white;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box-4 {
+    border-radius: 1rem;
+    background: no-repeat url('/weather.jpg');
+    background-size: cover;
+    box-shadow: 13px 13px 8px #bfafb2;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 3rem;
+    color: white;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box-5 {
+    grid-column: 3;
+    grid-row: 2/4;
+    border-radius: 1rem;
+    background: center no-repeat url('https://i.pinimg.com/originals/fd/60/e0/fd60e040976284655aaa63db3eb94f0d.jpg');
+    background-size: cover;
+    box-shadow: 13px 13px 8px #bfafb2;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 3rem;
+    color: white;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box-6 {
+    grid-column: 1/3;
+    border-radius: 1rem;
+    background: no-repeat url('https://wallpapercave.com/wp/vDy3sUb.jpg');
+    background-size: cover;
+    box-shadow: 13px 13px 8px #bfafb2;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 3rem;
+    color: white;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box-5 span {
+    text-align: center;
+    color: #cffffe;
+    padding-top: 140%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .alert {
+    width: 20rem;
+  }
+
+  #bcc78b6a-42d3-482d-a166-e03269f3a1e1 {
+    width: 450px;
+  }
+
+  .middle-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(350px, auto);
+    grid-gap: 1.2rem;
+  }
+
+  .box-1 {
+    border-radius: 1rem;
+    background: no-repeat url('https://spoonacular.com/application/frontend/images/wallpaper1.jpg');
+    background-size: cover;
+    box-shadow: 13px 13px 8px #bfafb2;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 3rem;
+    color: white;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box-2 {
+    border-radius: 1rem;
+    background: right no-repeat url('https://s3.amazonaws.com/brewerydb/home-carousel-images/hp-main.jpg');
+    background-size: cover;
+    box-shadow: 13px 13px 8px #bfafb2;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 3rem;
+    color: white;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box-3 {
+    border-radius: 1rem;
+    background: center no-repeat url('https://vetstreet-wb.brightspotcdn.com/47/ba/5238d46b4ddd9243d464e93a8eb5/243359.jpg');
+    background-size: cover;
+    box-shadow: 13px 13px 8px #bfafb2;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 3rem;
+    color: white;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box-4 {
+    border-radius: 1rem;
+    background: no-repeat url('https://free4kwallpapers.com/uploads/originals/2019/04/19/nice-weather-amp-river-views-wallpaper.jpg');
+    background-size: cover;
+    box-shadow: 13px 13px 8px #bfafb2;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 3rem;
+    color: white;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box-5 {
+    border-radius: 1rem;
+    background: center no-repeat url('https://i.pinimg.com/originals/7b/37/09/7b3709fa74883ea47621e86f8dade98c.png');
+    background-size: cover;
+    box-shadow: 13px 13px 8px #bfafb2;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 3rem;
+    color: white;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box-6 {
+    border-radius: 1rem;
+    background: no-repeat url('https://wallpapercave.com/wp/vDy3sUb.jpg');
+    background-size: cover;
+    box-shadow: 13px 13px 8px #bfafb2;
+    font-family: 'Libre Barcode 128 Text', cursive;
+    font-size: 3rem;
+    color: white;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box-5 span {
+    text-align: center;
+    color: #cffffe;
+    padding-top: 50%;
+  }
+}
+
+.box-1 span {
+  text-align: center;
+  color: #cffffe;
+  padding-top: 50%;
+}
+
+.box-2 span {
+  text-align: center;
+  color: #cffffe;
+  padding-top: 45%;
+}
+
+.box-3 span {
+  text-align: center;
+  color: #cffffe;
+  padding-top: 70%;
+}
+
+.box-4 span {
+  text-align: center;
+  color: #cffffe;
+  padding-top: 40%;
+}
+
+.box-6 span {
+  text-align: center;
+  color: #cffffe;
+  padding-bottom: 50%;
+}
+
+.signup, .login {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.login-input::placeholder {
+  text-align: center;
+}
+
+.login-label {
+  font-family: 'Londrina Solid', cursive;
+  font-size: 3rem;
+  color: #81b214;
+}
+
+
+.contact-container {
+  height: 10rem;
+  background-color: #81b214;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-container a .fab {
+  transition: 0.5s;
+  color: #f7f5dd;
+}
+
+.contact-container a .fas {
+  transition: 0.5s;
+  color: #f7f5dd;
+}
+
+.contact-container a {
+  transition: 0.5s;
+  border: none;
+}
+
+.facebook, .instagram, .gmail, .github {
+  padding-left: 3rem;
+}
+
+.linkedin:hover>.fab {
+  transform: translate(0, -50%);
+  color: #0e76a8;
+}
+
+.gmail:hover>.fas {
+  transform: translate(0, -50%);
+  color: #c71610;
+}
+
+.facebook:hover>.fab {
+  transform: translate(0, -50%);
+  color: #3b5998;
+}
+
+.instagram:hover>.fab {
+  transform: translate(0, -50%);
+  color: #3f729b;
+}
+
+.github:hover>.fab {
+  transform: translate(0, -50%);
+  color: #333;
+}
+
+.alert {
+  font-family: 'Grandstander', cursive;
+  color: #cf7500;
+  width: 25rem;
+  margin:auto;
+}
+
+.github_login{
+  border: none;
+  background-color: inherit;
+  width: 14rem;
+  height:2.3rem;
+  position: absolute;
+  left: 0;
+  top:0;
+  down:0;
+}
+
+.github_login:hover{
+  border: none;
+  opacity: -1;
+  width: 14rem;
+  height:2.3rem;
+  position: absolute;
+  left: 0;
+  top:0;
+  down:0;
+}

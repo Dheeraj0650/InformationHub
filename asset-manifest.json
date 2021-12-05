@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Dheeraj0650/InformationHub.git/static/css/main.91b78ec3.chunk.css",
+    "main.js": "/Dheeraj0650/InformationHub.git/static/js/main.97a7f31a.chunk.js",
+    "main.js.map": "/Dheeraj0650/InformationHub.git/static/js/main.97a7f31a.chunk.js.map",
+    "runtime-main.js": "/Dheeraj0650/InformationHub.git/static/js/runtime-main.116d8097.js",
+    "runtime-main.js.map": "/Dheeraj0650/InformationHub.git/static/js/runtime-main.116d8097.js.map",
+    "static/css/2.4bf60a90.chunk.css": "/Dheeraj0650/InformationHub.git/static/css/2.4bf60a90.chunk.css",
+    "static/js/2.3f9a0e05.chunk.js": "/Dheeraj0650/InformationHub.git/static/js/2.3f9a0e05.chunk.js",
+    "static/js/2.3f9a0e05.chunk.js.map": "/Dheeraj0650/InformationHub.git/static/js/2.3f9a0e05.chunk.js.map",
+    "index.html": "/Dheeraj0650/InformationHub.git/index.html",
+    "static/css/2.4bf60a90.chunk.css.map": "/Dheeraj0650/InformationHub.git/static/css/2.4bf60a90.chunk.css.map",
+    "static/css/main.91b78ec3.chunk.css.map": "/Dheeraj0650/InformationHub.git/static/css/main.91b78ec3.chunk.css.map",
+    "static/js/2.3f9a0e05.chunk.js.LICENSE.txt": "/Dheeraj0650/InformationHub.git/static/js/2.3f9a0e05.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.116d8097.js",
+    "static/css/2.4bf60a90.chunk.css",
+    "static/js/2.3f9a0e05.chunk.js",
+    "static/css/main.91b78ec3.chunk.css",
+    "static/js/main.97a7f31a.chunk.js"
+  ]
+}
