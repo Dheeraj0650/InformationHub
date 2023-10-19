@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import { peopleMovieResult } from '../../../store/index';
 import { useDispatch } from 'react-redux';
 
-export default function(props){
+export default function PeopleCards(props){
   const dispatch = useDispatch();
 
   const moreOptions = (movies) => {

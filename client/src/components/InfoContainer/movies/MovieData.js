@@ -72,6 +72,7 @@ export default function Weather(props){
   const [circularProgress,setCircularProgress] = useState("static");
   const getDetails = (details,method) => {
     setCircularProgress("indeterminate");
+    console.log(method);
     fetch(method,{
       method: 'POST',
       body: details,
@@ -292,7 +293,8 @@ export default function Weather(props){
       </div>
       {((method === "" || method ==="trending") && !searchResults) && !peopleSearchResults &&
           <div class="row align-middle">
-              {(movieResults === '')?data.map((info) => {
+            {console.log(data)}
+              {(movieResults === '') ? data.map((info) => {
                 return (<MovieCards details={info} height="28rem"/>);
               }):<ResultsCard details={movieResults} height="60rem"/>}
           </div>

@@ -10,7 +10,10 @@ const findOrCreate = require('mongoose-findorcreate');
 var cors = require('cors');
 var fetch = require("cross-fetch");
 const app = express();
+
 let port = process.env.PORT;
+const mongodb_password = process.env.mongodb_password;
+console.log(process.versions.node);
 if (port == null || port == "") {
   port = 9000;
 }
@@ -42,7 +45,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // mongoose.set("useCreateIndex", true);
-mongoose.connect("mongodb+srv://dheeraj0650:" + process.env.PASSWORD + "@cluster0.vejhn.mongodb.net/InformationHub", {
+mongoose.connect("mongodb+srv://kottedheeraj:"+ mongodb_password + "@cluster0.kugvsrx.mongodb.net/?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -364,7 +367,7 @@ app.post("/movies/:method", function(req, res) {
         var encodedValue = encodeURIComponent(details[property]);
         formBody.push(encodedKey + "=" + encodedValue);
       }
-      formBody.push('api_key' + "=" + "cb261bed9d6fb20d553f67a15b21840e");
+      formBody.push('api_key' + "=" + "9f728a8863038d6b9fe17931af23de9f");
       formBody = formBody.join("&");
       fetch('https://api.themoviedb.org/3/search/movie?' + formBody,{
         method: 'GET',
@@ -372,6 +375,7 @@ app.post("/movies/:method", function(req, res) {
       .then(function(resp) { return resp.json() }) // Convert data to json
       .then(function(data) {
         var data = JSON.stringify(data);
+        console.log(data)
         res.send(data);
       })
       .catch(err => {
@@ -384,7 +388,7 @@ app.post("/movies/:method", function(req, res) {
         var encodedValue = encodeURIComponent(details[property]);
         formBody.push(encodedKey + "=" + encodedValue);
       }
-      formBody.push('api_key' + "=" + "cb261bed9d6fb20d553f67a15b21840e");
+      formBody.push('api_key' + "=" + "9f728a8863038d6b9fe17931af23de9f");
       formBody = formBody.join("&");
       fetch('https://api.themoviedb.org/3/trending/all/week?' + formBody,{
         method: 'GET',
@@ -392,6 +396,7 @@ app.post("/movies/:method", function(req, res) {
       .then(function(resp) { return resp.json() }) // Convert data to json
       .then(function(data) {
         var data = JSON.stringify(data);
+        console.log(data);
         res.send(data);
       })
       .catch(err => {
@@ -404,7 +409,7 @@ app.post("/movies/:method", function(req, res) {
         var encodedValue = encodeURIComponent(details[property]);
         formBody.push(encodedKey + "=" + encodedValue);
       }
-      formBody.push('api_key' + "=" + "cb261bed9d6fb20d553f67a15b21840e");
+      formBody.push('api_key' + "=" + "9f728a8863038d6b9fe17931af23de9f");
       formBody = formBody.join("&");
       fetch('https://api.themoviedb.org/3/search/person?' + formBody,{
         method: 'GET',

@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import ResultsCard from '../weather/ResultsCard';
 import '../weather/Results.css';
 
-export default function(props){
+export default function resultsCard(props) {
   let minuteKeys = Object.keys(props.details);
   const movieInfo = {
     name:"Name of the Movie/TV series",
