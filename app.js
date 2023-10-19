@@ -45,7 +45,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // mongoose.set("useCreateIndex", true);
-mongoose.connect("mongodb+srv://kottedheeraj:"+ mongodb_password + "@cluster0.kugvsrx.mongodb.net/?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://dheeraj0650:"+ mongodb_password + "@cluster0.vejhn.mongodb.net/?retryWrites=true&w=majority", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
