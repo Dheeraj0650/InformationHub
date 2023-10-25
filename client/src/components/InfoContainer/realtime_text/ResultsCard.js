@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import ResultsCard from '../weather/ResultsCard';
 import '../weather/Results.css';
 
-export default function(props){
+export default function ResultCard(props){
   let minuteKeys = Object.keys(props.details);
   return (
        <div class="container results" >
@@ -16,6 +16,7 @@ export default function(props){
                           let value = props.details[key];
                           return (key === 'comment')?<React.Fragment><div class="container"><span style={{fontSize:"1.2rem",textAlign:"justify"}}>{value}</span></div><hr style={{backgroundColor:"white"}}/></React.Fragment>:<ResultsCard class = "card l-bg-green-dark" heading = {key} value = {value}/>
                         }
+                        return null;
                       })}
                   </div>
               </div>

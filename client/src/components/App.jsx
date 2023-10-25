@@ -7,7 +7,7 @@ import Contact from './Contact';
 import {BrowserRouter as Router, Switch , Route, Redirect, NavLink} from 'react-router-dom';
 import Cookies from 'js-cookie';
 import {useSelector, useDispatch} from 'react-redux';
-import { authActions } from '../store/index';
+import { authActions, realtimeTextTeamResult} from '../store/index';
 import 'simplebar/dist/simplebar.min.css';
 import SidebarMenuComponent from './InfoContainer/SidebarMenuComponent';
 import languages from './InfoContainer/languages';
@@ -37,7 +37,14 @@ function App(){
           var stateParse = JSON.parse(state);
           if(stateParse.isLoggedIn){
             let username = stateParse.username;
-            dispatch(authActions.login(username));
+            let team_name = stateParse.teamName;
+
+            dispatch(authActions.login({
+                username: username,
+                team_name: team_name
+            }));
+
+            dispatch(realtimeTextTeamResult.setRealtimeTextTeam(team_name));
           }
         }
     }, []);

@@ -10,23 +10,18 @@ const findOrCreate = require('mongoose-findorcreate');
 var cors = require('cors');
 var fetch = require("cross-fetch");
 const app = express();
+const http = require('http');
+const server = http.createServer(app);
+const {Server} = require("socket.io");
 
 let port = process.env.PORT;
 const mongodb_password = process.env.mongodb_password;
 console.log(process.versions.node);
+
 if (port == null || port == "") {
   port = 9000;
 }
-const server = app.listen(port, function() {
-  console.log("Server started");
-});
-const io = require("socket.io")(server, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST"],
-    credentials: true
-  }
-});
+
 app.use(cors());
 
 app.use(express.static(__dirname + "/public"));
@@ -34,6 +29,19 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+app.use(cors({
+  origin: "http://localhost:3000",
+  credentials: true,
+  withCredentials:true
+}))
+
+const io = new Server(server, {
+  cors:{
+      origin:"http://localhost:3000",
+      methods: ["GET", "POST"]
+  }
+});
 
 app.use(session({
   secret: process.env.SECRET,
@@ -64,7 +72,7 @@ const userSchema = new mongoose.Schema({
   email: String,
   password: String,
   googleId: String,
-  team:[String]
+  team: String
 });
 
 const realtimeCardSchema = new mongoose.Schema({
@@ -106,8 +114,11 @@ io.on("connection", function(socket){
 })
 
 app.post("/realtimeCards", function(req, res) {
+  console.log(req.body.username)
+  console.log(req.body.team);
   User.find({username:req.body.username},function(err,docs){
-    if(docs[0].team.includes(req.body.team)){
+    console.log(docs)
+    if(docs[0].team == req.body.team){
       RealtimeTextCard.find({team:req.body.team},
         function (err, docs) {
           res.send(JSON.stringify(docs));
@@ -132,13 +143,17 @@ passport.deserializeUser(function(id, done) {
 app.post("/register", function(req, res) {
   User.register({
     username: req.body.username,
-    email:req.body.email.toLowerCase()
+    email:req.body.email.toLowerCase(),
+    team:req.body.team
   }, req.body.password, function(err, user) {
     if (err) {
       res.send(err.message);
     } else {
       passport.authenticate("local")(req, res, function() {
-        res.send("Successful");
+        res.send({
+          successful: true,
+          team: req.body.team
+        });
       });
     }
   });
@@ -159,10 +174,15 @@ app.post("/login", function(req, res) {
   });
   req.login(user, function(err) {
     if (err) {
+      console.log(err)
       res.send(err.message);
     } else {
       passport.authenticate("local")(req, res, function() {
-        res.send("Successful");
+        console.log(req.user.team);
+        res.send({
+          successful: true,
+          team: req.user.team
+        });
 
       });
     }
@@ -455,3 +475,7 @@ if(process.env.NODE_ENV === "production"){
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   })
 }
+
+server.listen(port, function() {
+  console.log("Server started");
+});

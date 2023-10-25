@@ -8,11 +8,11 @@ import Select from '@material-ui/core/Select';
 import AddCard from './AddCard';
 import {addCard} from '../InfoData';
 import io from "socket.io-client";
-import { realtimeTextCardResult, realtimeTextResult, authActions, realtimeTextTeamResult} from '../../../store/index';
+import { realtimeTextResult } from '../../../store/index';
 import { useDispatch, useSelector} from 'react-redux';
 import ResultsCard from './ResultsCard';
 
-const socket = io();
+const socket = io('http://localhost:9000');
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -25,15 +25,18 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function(){
+export default function RealtimeText(){
   const dispatch = useDispatch();
   const team = useSelector(state => state.realtimeTextTeamResult.details);
   const username = useSelector(state => state.auth.username);
   const realtimeTextCard = useSelector(state => state.realtimeTextCardResult.details);
   const realtimeTextResults = useSelector(state => state.realtimeTextResult.details);
+  
   useEffect(function(){
     socket.emit("added-new-card",JSON.stringify(realtimeTextCard));
+    addNewCardArray([...cardArray, realtimeTextCard])
   },[realtimeTextCard]);
+
   const [cardArray,addNewCardArray] = useState([]);
   const [open, setOpen] = React.useState(false);
   const [page,setPageToShow] = useState('');
@@ -55,25 +58,33 @@ export default function(){
   }
 
   useEffect(function(){
+    console.log("hello");
     socket.on(
        "changes-in-card",function(data){
-         var details = "username=" + username + "&" +"team=" + team;
-         fetch('realtimeCards',{
+         var details = "username=" + username + "&" + "team=" + team;
+         console.log(details)
+         fetch('http://localhost:9000/realtimeCards',{
            method:'POST',
            headers: {
              'Content-Type': 'application/x-www-form-urlencoded'
            },
            body:details,
          })
-         .then(function(resp) { return resp.json() }) // Convert data to json
+         .then(function(resp) { 
+          console.log(resp)
+          return resp.json() 
+        }) // Convert data to json
          .then(function(data) {
+          console.log(data);
            addNewCardArray(data);
+         }).catch(function(error){
+            console.log(error)
          })
          setPageToShow("HomePage");
        }
      );
   },[]);
-
+  
   const group = {
     minor:'card_3 gr-3',
     major:'card_3 gr-2',
@@ -133,7 +144,7 @@ export default function(){
           </div>
         </div>
       </div>
-      {page === "AddPage" && <AddCard details={addCard}/>}
+      {page === "AddPage" && <AddCard details={addCard} setPageToShow={setPageToShow}/>}
         {page === "HomePage" && <div class="row align-middle">
           {(page === "HomePage" && realtimeTextResults === '')?cardArray.map((info) => (<RealtimeTextCard card_group = {group[info.priority]} status = {groupIcon[info.priority]} name = {info.name} title = {info.title} details = {info.comment} data = {info}/>)):<ResultsCard details={realtimeTextResults} />}
         </div>}

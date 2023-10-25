@@ -3,7 +3,7 @@ import React from 'react';
 import {realtimeTextResult} from '../../../store/index';
 import { useDispatch, useSelector} from 'react-redux';
 
-export default function(props){
+export default function RealtimeTextCard(props){
   const dispatch = useDispatch();
 
   const moreOptions = (data) => {

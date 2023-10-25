@@ -8,11 +8,11 @@ import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import {useDispatch} from 'react-redux';
-import Cookies from 'js-cookie';
 import socialMediaAuth from '../config/auth';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import {googleProvider,githubProvider,microsoftProvider} from '../config/authMethods';
-import { authActions } from '../store/index';
+import { authActions, realtimeTextTeamResult } from '../store/index';
+import { json } from 'body-parser';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -186,6 +186,7 @@ export default function FullWidthTabs(props) {
       formBody.push(encodedKey + "=" + encodedValue);
     }
     formBody = formBody.join("&");
+    console.log(method);
     fetch(method,{
       method: 'POST',
       body: formBody,
@@ -198,13 +199,22 @@ export default function FullWidthTabs(props) {
         var p = Promise.resolve(data);
         p.then(function(value) {
              setCircularProgress("static");
-             if(value === "Successful"){
+             console.log(value.includes("successful"));
+             if(value.includes("successful")){
+                value = JSON.parse(value)
                  if(details.username){
-                   dispatch(authActions.login(details.username));
+                   dispatch(authActions.login({
+                      username: details.username,
+                      team_name: value.team
+                    }));
                  }
                  else{
-                   dispatch(authActions.login(details.email));
+                   dispatch(authActions.login({
+                      username: details.email,
+                      team_name: value.team
+                    }));
                  }
+                 dispatch(realtimeTextTeamResult.setRealtimeTextTeam(value.team));
              }
              else{
                  if(method === 'login'){
@@ -213,6 +223,7 @@ export default function FullWidthTabs(props) {
                  else{
                    changeAlert_2([true,value]);
                  }
+                 dispatch(realtimeTextTeamResult.setRealtimeTextTeam(''));
                  dispatch(authActions.logout());
              }
          });
@@ -227,10 +238,13 @@ export default function FullWidthTabs(props) {
           const username = event.target.username_3.value;
           const email = event.target.username_1.value;
           const password = event.target.password_1.value;
+          const team = event.target.team_name.value;
+
           let details = {
             'email':email,
             'username':username,
-            'password':password
+            'password':password,
+            'team':team
           };
           Users(details,'register');
         }
@@ -309,6 +323,7 @@ export default function FullWidthTabs(props) {
               <p className = "alert">{alert_1[1]}</p>
               <input onChange={validatePassword}  type="password" name="password_1" placeholder="Password" required="" class="login-input password-1" />
               <p className = "alert">{alert_2[1]}</p>
+              <input onChange={validateUsername}  type="name" name="team_name" placeholder="Team Name" required="" class="login-input username-1" />
               {circularProgress==="indeterminate" && <CircularProgress color="primary" variant={circularProgress}/>}
               <button type="submit" class="hover-button">Sign up</button>
             </form>

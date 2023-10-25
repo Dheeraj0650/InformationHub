@@ -3,7 +3,8 @@ import Cookies from 'js-cookie';
 
 const initialAuthState = {
   isLoggedIn: false,
-  username:''
+  username:'',
+  teamName:''
 };
 
 const peopleMovieResultsState = {
@@ -23,7 +24,7 @@ const realtimeTextState = {
 };
 
 const realtimeTextTeamState = {
-  details: 'Team-A',
+  details: '',
 };
 
 const authSlice = createSlice({
@@ -32,17 +33,20 @@ const authSlice = createSlice({
   reducers: {
     login(state,action) {
       var loginDetails = {
-        username: action.payload,
-        isLoggedIn: true
+        username: action.payload.username,
+        isLoggedIn: true,
+        teamName : action.payload.team_name
       }
       Cookies.set('information-hub-cookie', JSON.stringify(loginDetails), { expires: 2 });
       state.isLoggedIn = true;
-      state.username = action.payload;
+      state.username = action.payload.username;
+      state.teamName = action.payload.team_name;
     },
     logout(state) {
       Cookies.remove('information-hub-cookie');
       state.isLoggedIn = false;
       state.username = '';
+      state.teamName = '';
     },
   },
 });

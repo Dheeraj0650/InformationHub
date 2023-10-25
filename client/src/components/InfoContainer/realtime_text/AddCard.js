@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function(props){
+export default function AddCard(props){
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -55,8 +55,10 @@ export default function(props){
     for(var idx = 0; idx < keyArray.length;idx++){
       details[keyArray[idx]] = valueArray[idx];
     }
-    dispatch(realtimeTextTeamResult.setRealtimeTextTeam(event.target.team.value));
+    console.log(details);
+    // dispatch(realtimeTextTeamResult.setRealtimeTextTeam(event.target.team.value));
     dispatch(realtimeTextCardResult.setRealtimeTextCard(details));
+    props.setPageToShow('HomePage');
   }
 
   return (

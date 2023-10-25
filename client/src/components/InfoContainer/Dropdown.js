@@ -4,7 +4,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
 
-export default function(props){
+export default function Dropdown(props){
   let content_arr = [];
 
   for (const key in props.content){
@@ -30,6 +30,7 @@ export default function(props){
           required={props.required}
         >
           <option aria-label="None" value="" />
+          {console.log(content_arr)}
           {content_arr.map((info) => (<option value={info[0]}>{info[1]}</option>))}
         </Select>
         <span style={{margin:"8px 0 8px 0",fontSize:"0.8rem"}}>{props.description}</span>
