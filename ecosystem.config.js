@@ -25,7 +25,7 @@ module.exports = {
     env_production: {
       NODE_ENV: "production"
     },
-    log_file:'/home/ec2-user/.pm2/logs'
+    log_file:'/output_logs'
   }]
 };
   
