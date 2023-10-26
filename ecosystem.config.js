@@ -25,7 +25,7 @@ module.exports = {
     env_production: {
       NODE_ENV: "production"
     },
-    log_file:'/output_logs'
+    log_file:'/'
   }]
 };
   
