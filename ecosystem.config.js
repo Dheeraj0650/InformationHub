@@ -9,7 +9,11 @@ module.exports = {
         autorestart: true,
         watch: false,
         max_memory_restart: "300M",
-        log_date_format: "YYYY-MM-DD HH:mm Z"
+        log_date_format: "YYYY-MM-DD HH:mm Z",
+        env_production: {
+          "PORT": 3000,
+          "NODE_ENV": "production",
+        }
       },
       {
         name: "Backend",
@@ -20,7 +24,11 @@ module.exports = {
         autorestart: true,
         watch: false,
         max_memory_restart: "300M",
-        log_date_format: "YYYY-MM-DD HH:mm Z"
+        log_date_format: "YYYY-MM-DD HH:mm Z",
+        env_production: {
+          "PORT": 9000,
+          "NODE_ENV": "production",
+        }
       }
     ],
   };
