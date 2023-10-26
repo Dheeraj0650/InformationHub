@@ -4,7 +4,11 @@ module.exports = {
         name: "InformationHub",
         script: "npm",
         args: "run dev",
-        min_uptime: 10000
+        interpreter: "none",
+        autorestart: true,
+        watch: false,
+        max_memory_restart: "300M",
+        log_date_format: "YYYY-MM-DD HH:mm Z"
       },
     ],
   };
