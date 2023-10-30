@@ -1,4 +1,4 @@
-w# Information Hub
+# Information Hub
 
 Information Hub is a powerful full stack application that aggregates data from various REST API services and presents it seamlessly in a user-friendly interface. Say goodbye to dealing with API keys and code intricacies; Information Hub simplifies the process for you. It currently integrates with a range of services, including Movies API, Weather API, NASA API, Realtime Board, and more.
 
