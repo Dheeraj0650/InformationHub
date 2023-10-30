@@ -10,6 +10,7 @@ Information Hub is a powerful full stack application that aggregates data from v
 - **Security:** NGINX is employed for network security and load balancing, enhancing the application's robustness.
 - **CI/CD:** Jenkins is used for continuous integration and continuous deployment, ensuring a smooth development and deployment pipeline.
 - **Containerization:** The application is dockerized within a container, providing consistency across different environments.
+- **Real-time Communication:** Utilizes Socket.io for seamless real-time communication and collaboration features.
 - **Resilience:** The system is designed to automatically restart all services even after system reboots, ensuring uninterrupted operation.
 
 ## CI/CD with Jenkins
