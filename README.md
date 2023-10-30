@@ -12,6 +12,15 @@ Information Hub is a powerful full stack application that aggregates data from v
 - **Containerization:** The application is dockerized within a container, providing consistency across different environments.
 - **Resilience:** The system is designed to automatically restart all services even after system reboots, ensuring uninterrupted operation.
 
+## CI/CD with Jenkins
+
+Continuous Integration and Continuous Deployment (CI/CD) are vital components of our development workflow. Jenkins, our CI/CD tool, automates the building, testing, and deployment of the application. This ensures that new features and fixes are quickly and reliably deployed to production.
+
+The CI/CD pipeline typically includes the following stages:
+- Code is automatically built and tested whenever changes are pushed to the repository.
+- After successful testing, the application is deployed to the staging environment for further validation.
+- Once the staging environment is validated, Jenkins deploys the changes to the production environment.
+
 ## Workflow
 
 1. **Login/Register**: Users can access the application by registering with a username and password, ensuring personalized experiences.
