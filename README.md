@@ -1,4 +1,4 @@
-# Information Hub
+w# Information Hub
 
 Information Hub is a powerful full stack application that aggregates data from various REST API services and presents it seamlessly in a user-friendly interface. Say goodbye to dealing with API keys and code intricacies; Information Hub simplifies the process for you. It currently integrates with a range of services, including Movies API, Weather API, NASA API, Realtime Board, and more.
 
@@ -12,6 +12,8 @@ Information Hub is a powerful full stack application that aggregates data from v
 - **Containerization:** The application is dockerized within a container, providing consistency across different environments.
 - **Real-time Communication:** Utilizes Socket.io for seamless real-time communication and collaboration features.
 - **Resilience:** The system is designed to automatically restart all services even after system reboots, ensuring uninterrupted operation.
+
+![Projects - Page 1](https://github.com/Dheeraj0650/InformationHub/assets/41461773/f05a1d73-3cb1-40fa-b1a3-9c8b40aa7d4e)
 
 ## CI/CD with Jenkins
 
