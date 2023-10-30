@@ -13,7 +13,7 @@ Information Hub is a powerful full stack application that aggregates data from v
 - **Real-time Communication:** Utilizes Socket.io for seamless real-time communication and collaboration features.
 - **Resilience:** The system is designed to automatically restart all services even after system reboots, ensuring uninterrupted operation.
 
-![Projects - Page 1](https://github.com/Dheeraj0650/InformationHub/assets/41461773/f05a1d73-3cb1-40fa-b1a3-9c8b40aa7d4e)
+![Projects - Page 1-3](https://github.com/Dheeraj0650/InformationHub/assets/41461773/8cead43b-1f67-4bdf-ac0e-8d7c1b19f887)
 
 ## CI/CD with Jenkins
 
