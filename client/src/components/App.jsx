@@ -17,6 +17,7 @@ import SimpleBar from 'simplebar-react';
 import {sidebarMenuArray, method_1, method_2, method_3, method_4, movies, people} from './InfoContainer/InfoData';
 import WeatherCard from './InfoContainer/weather/WeatherCards';
 import WeatherData from './InfoContainer/weather/WeatherData';
+import NasaCard from './InfoContainer/nasa/NasaGrid';
 import toggleDropdown from './toggleDropdown';
 import Select from './Select'
 import WeatherByCityName from './InfoContainer/weather/WeatherByCityName';
@@ -24,6 +25,9 @@ import AirPollution from './InfoContainer/weather/AirPollution';
 import Geocoding from './InfoContainer/weather/Geocoding';
 import MovieCards from './InfoContainer/movies/MovieCards';
 import MovieData from './InfoContainer/movies/MovieData';
+import NasaResults from './InfoContainer/nasa/ResultsCard';
+
+
 import RealtimeText from './InfoContainer/realtime_text/RealtimeText';
 
 function App(){
@@ -75,12 +79,12 @@ function App(){
                            {!isLoggedIn && <Intro />}
                            {isLoggedIn &&
                                <div class="main-row">
-                                   <div class="menu-row" id="menu-row">
+                                   <div class="menu-row toggle" id="menu-row">
                                        <SimpleBar style={{height:"40rem"}}>
                                            {sidebarMenuArray.map((info) => (<NavLink style={{textDecoration: "none"}} to = {`./${info.name}`}><SidebarMenuComponent name={info.name} info={info.description} onClick={toggleDropdown}/></NavLink>))}
                                        </SimpleBar>
                                    </div>
-                                   <button type="button" class="btn btn-outline-primary toggleDropdown" id="toggleDropdown" onClick={toggleDropdown} ><i class="fas fa-chevron-circle-right"></i></button>
+                                   <button type="button" class="btn btn-primary toggleDropdown toggleButton" id="toggleDropdown" onClick={toggleDropdown} ><i class="fas fa-chevron-circle-left"></i></button>
                                    <div class="container-fluid info-container">
                                      <Route path = "/" exact>
                                          {isLoggedIn?<Select />:<Redirect to="/" />}
@@ -100,6 +104,9 @@ function App(){
                                      <Route path = "/method_4" exact>
                                          {isLoggedIn?<Geocoding info="Search for locations while working with geographic names and coordinates" details={method_4} api="geocoding"/>:<Redirect to="/" />}
                                      </Route>
+                                     <Route path = "/method_5" exact>
+                                         {isLoggedIn?<NasaResults url="https://images-api.nasa.gov/search?q=" query="apollo 11"/>:<Redirect to="/" />}
+                                     </Route>
                                      <Route path = "/results" exact>
                                          {isLoggedIn?<Results />:<Redirect to="/" />}
                                      </Route>
@@ -108,6 +115,9 @@ function App(){
                                      </Route>
                                      <Route path = "/Realtimetext" exact>
                                          {isLoggedIn?<RealtimeText />:<Redirect to="/" />}
+                                     </Route>
+                                     <Route path = "/Nasa" exact>
+                                        {isLoggedIn?<NasaCard />:<Redirect to="/" />}
                                      </Route>
                                    </div>
                                </div>}

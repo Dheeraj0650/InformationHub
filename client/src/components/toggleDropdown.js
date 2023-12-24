@@ -4,7 +4,6 @@ const toggle = () => {
   element.classList.toggle("toggle");
   var button = document.getElementById("toggleDropdown");
   button.classList.toggle("toggleButton");
-  button.classList.toggle("btn-primary");
   if (button.innerHTML === '<i class="fas fa-chevron-circle-right"></i>') {
     button.innerHTML = '<i class="fas fa-chevron-circle-left"></i>';
   } else {

@@ -487,3 +487,9 @@ html {
   top:0;
   down:0;
 }
+
+.nasa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 10rem;
+}
